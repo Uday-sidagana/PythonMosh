@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
+from bs4 import BeautifulSoup
 
 def audio_recognize_in_func():
     r = sr.Recognizer()
@@ -43,6 +44,10 @@ def functionalities(command):
         search_box.send_keys(Keys.RETURN)
         time.sleep(5)
         driver.quit()
+
+    else:
+
+
 
 r = sr.Recognizer()
 with sr.Microphone() as source:
