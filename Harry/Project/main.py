@@ -7,6 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 from bs4 import BeautifulSoup
+import requests
+
 
 def audio_recognize_in_func():
     r = sr.Recognizer()
@@ -46,6 +48,21 @@ def functionalities(command):
         driver.quit()
 
     else:
+        url= f"https://www.dictionary.com/browse/{command}"
+
+        r = requests.get(url)
+        soup = BeautifulSoup(r.text, 'html.parser')
+        first_div = soup.find('div', class_="NZKOFkdkcvYgD3lqOIJw")
+
+        engine = pyttsx3.init(driverName='nsss')
+        volume = engine.getProperty('volume')   
+        engine.setProperty('volume',1.0)
+        engine.setProperty('rate', 150)
+        print("Speaking now")
+        engine.say(first_div)
+        engine.runAndWait()
+
+        
 
 
 
