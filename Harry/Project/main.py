@@ -53,13 +53,15 @@ def functionalities(command):
         r = requests.get(url)
         soup = BeautifulSoup(r.text, 'html.parser')
         first_div = soup.find('div', class_="NZKOFkdkcvYgD3lqOIJw")
+        bot_text = first_div.get_text()
+        print(bot_text)
 
         engine = pyttsx3.init(driverName='nsss')
         volume = engine.getProperty('volume')   
         engine.setProperty('volume',1.0)
-        engine.setProperty('rate', 150)
+        engine.setProperty('rate', 200)
         print("Speaking now")
-        engine.say(first_div)
+        engine.say(bot_text)
         engine.runAndWait()
 
         
@@ -87,7 +89,7 @@ if "panda" in assistant_call.lower():
 
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Listening...")
+        print("Command me!")
         audio = r.listen(source)
 
     command = r.recognize_google(audio)
