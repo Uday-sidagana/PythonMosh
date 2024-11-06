@@ -44,7 +44,7 @@ if __name__ == "__main__":
     app.run(host= '127.0.0.1', port=5000, debug=True)'''
 
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__, template_folder='templates')
 
@@ -61,6 +61,10 @@ def hello():
 def filter():
     text = "Uday Sidagana"
     return render_template("filter.html", text = text)
+
+@app.route('/redirect_endpoint')
+def redirect_endpoint():
+    return redirect(url_for('filter'))  #Using url_for() without redirect function returns a value "/filter"
 
 #Custom filter
 @app.template_filter('reverse_string')
