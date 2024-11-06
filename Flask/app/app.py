@@ -43,8 +43,9 @@ def method_test():
 if __name__ == "__main__":
     app.run(host= '127.0.0.1', port=5000, debug=True)'''
 
+#HTML and Template Handling along with URL redirection and dynamic urls
 
-from flask import Flask, request, render_template, redirect, url_for
+'''from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__, template_folder='templates')
 
@@ -94,4 +95,17 @@ def ind_alt_case(s):
     
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port= 5500, debug =True)
+    app.run(host = "0.0.0.0", port= 5500, debug =True)'''
+
+
+#Forms, POST, JSON handling, File Handling
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Hello"
+
+if __name__ == "__main__":
+    app.run(host = '0.0.0.0', port=5200, debug=True)
