@@ -57,5 +57,10 @@ def hello():
     
     return render_template('index.html', a=firstname, b=lastname, c =myage, d=mylist)
 
+@app.route('/filter')
+def filter():
+    text = "uday sidagana"
+    return render_template("filter.html", text = text)
+
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port= 5500, debug =True)

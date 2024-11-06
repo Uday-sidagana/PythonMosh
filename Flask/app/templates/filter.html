@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title%}Filter{% endblock %}
+
+{% block content %}
+<p>I am the filter methods page</p>
+<p>{{text | upper}}</p>
+<p>{{ text| lower}}</p>
+<p>{{ text| replace('u','U') | replace('s','S')}}</p>
+<p>{{ text| title}}</p>
+
+{% endblock %}
