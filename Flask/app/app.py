@@ -50,7 +50,10 @@ app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def hello():
-    return render_template('index.html')
+    firstname = "Sidagana"
+    lastname= "Kiran"
+    myage=10 + 11
+    return render_template('index.html', a=firstname, b=lastname, c =myage)
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port= 5500, debug =True)
