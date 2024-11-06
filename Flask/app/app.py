@@ -59,8 +59,35 @@ def hello():
 
 @app.route('/filter')
 def filter():
-    text = "uday sidagana"
+    text = "Uday Sidagana"
     return render_template("filter.html", text = text)
+
+#Custom filter
+@app.template_filter('reverse_string')
+def string_reverse(s):
+    return s[::-1] #(first : is for parsing through entire string, second : is to step back(-1), effectively reversing string)
+
+@app.template_filter("repeat")
+def repeat(s,times=2):
+    return s*times
+
+@app.template_filter('alternate_case')
+def alt_case(s):
+    new =""
+    for i in s:
+        
+        if i.isupper():
+            i= i.lower()
+            
+        elif i.islower():
+            i= i.upper()
+        new = new + i
+    return new
+
+@app.template_filter('ind_alt_case')
+def ind_alt_case(s):
+    return ''.join(c.upper() if i%2 ==0 else c.lower() for i,c in enumerate(s))
+    
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port= 5500, debug =True)

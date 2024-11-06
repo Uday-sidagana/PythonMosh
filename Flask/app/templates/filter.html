@@ -7,5 +7,12 @@
 <p>{{ text| lower}}</p>
 <p>{{ text| replace('u','U') | replace('s','S')}}</p>
 <p>{{ text| title}}</p>
+<p>{{text | reverse_string | upper}}</p>
+<p>{{text | repeat }}</p>
+
+<p>{{text | repeat(5) }}</p>
+
+<p>{{text | alternate_case }}</p>
+<p>{{text | ind_alt_case}}</p>
 
 {% endblock %}
