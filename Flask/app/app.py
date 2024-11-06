@@ -53,7 +53,9 @@ def hello():
     firstname = "Sidagana"
     lastname= "Kiran"
     myage=10 + 11
-    return render_template('index.html', a=firstname, b=lastname, c =myage)
+    mylist =[10,20,30,40,50]
+    
+    return render_template('index.html', a=firstname, b=lastname, c =myage, d=mylist)
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port= 5500, debug =True)
