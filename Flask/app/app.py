@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response
+'''from flask import Flask, request, make_response
 
 
 app = Flask(__name__)
@@ -41,4 +41,16 @@ def method_test():
 
 
 if __name__ == "__main__":
-    app.run(host= '127.0.0.1', port=5000, debug=True)
+    app.run(host= '127.0.0.1', port=5000, debug=True)'''
+
+
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hello"
+
+if __name__ == "__main__":
+    app.run(host = "0.0.0.0", port= 5000, debud =True)
