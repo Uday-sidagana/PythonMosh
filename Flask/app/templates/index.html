@@ -15,5 +15,7 @@
             <li {% if (i/10)%2==0 %}, style="color: chartreuse;"{% endif %}>{{i}}</li>
         {% endfor %}
     </ul>
+    <a href="{{url_for('filter')}}" style="color: rgb(72, 120, 0);">Filters</a> 
+    <!-- url_for(*) *:function name of the route -->
 {% endblock %}
 
