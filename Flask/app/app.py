@@ -100,6 +100,7 @@ if __name__ == "__main__":
 
 #Forms, POST, JSON handling, File Handling
 from flask import Flask, render_template, request, redirect
+from werkzeug.utils import secure_filename #getting the file name
 import os.path
 
 app = Flask(__name__, template_folder='templates2')
@@ -124,7 +125,8 @@ def index():
 @app.route('/file_upload', methods=['POST'])
 def file_upload(): 
     display_files = request.files.get('file')
-    request.files['file'].save('/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/test.pdf')
+    filename = secure_filename(display_files.filename) #created a file name(extracted)
+    request.files['file'].save(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/{filename}')
     return render_template('file.html',  disp= display_files)
 
 
