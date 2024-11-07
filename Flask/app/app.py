@@ -109,9 +109,15 @@ def index():
         a = "Uday"
         return render_template('index.html', name=a)
     elif request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form['password']
-        return f"Your username is {username} and password is {password} "
+        if 'username' in request.form.keys() and 'password' in request.form.keys() and request.form.get('username') and request.form.get('password'):
+            username = request.form.get('username')
+            password = request.form['password']
+            if username == 'Panda' and password == 'pubg':
+                return f"Your username is {username} and password is {password} \n Success!!"
+            else:
+                return "Bruh You ain't the panda I know!!"
+        else:
+            return "Please fill up the Fields!"
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5200, debug=True)
