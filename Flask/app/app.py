@@ -124,7 +124,7 @@ def index():
 @app.route('/file_upload', methods=['POST'])
 def file_upload(): 
     display_files = request.files.get('file')
-    request.files['file'].save('app/upload_test')
+    request.files['file'].save('/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/test.pdf')
     return render_template('file.html',  disp= display_files)
 
 
