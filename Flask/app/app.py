@@ -120,9 +120,9 @@ def index():
             return "Please fill up the Fields!"
         
 
-@app.route('/file_upload')
+@app.route('/file_upload', methods=['POST'])
 def file_upload():
-    pass
+    return "File Uploaded!"
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5200, debug=True)
