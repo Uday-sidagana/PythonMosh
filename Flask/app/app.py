@@ -100,6 +100,7 @@ if __name__ == "__main__":
 
 #Forms, POST, JSON handling, File Handling
 from flask import Flask, render_template, request, redirect
+import os.path
 
 app = Flask(__name__, template_folder='templates2')
 
@@ -121,8 +122,11 @@ def index():
         
 
 @app.route('/file_upload', methods=['POST'])
-def file_upload():
-    return "File Uploaded!"
+def file_upload(): 
+    display_files = request.files.get('file')
+    request.files['file'].save('app/upload_test')
+    return render_template('file.html',  disp= display_files)
+
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5200, debug=True)
