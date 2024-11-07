@@ -99,13 +99,14 @@ if __name__ == "__main__":
 
 
 #Forms, POST, JSON handling, File Handling
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates2')
 
 @app.route('/')
 def index():
-    return "Hello"
+    a = "Uday"
+    return render_template('index.html', name=a)
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5200, debug=True)
