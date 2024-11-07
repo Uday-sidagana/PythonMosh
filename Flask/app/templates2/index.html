@@ -7,10 +7,10 @@
 </head>
 <body>
 <p>HELLO {{name | upper}}</p>  
-<form method="POST" action="{{url_for('index')}}">
+<form method="POST" action="{{ url_for('index') }}">
     <input type="text" placeholder="Username" name="username"><br>
     <input type="password" placeholder="Password" name="password"><br>
-    <input type="submit">
+    <input type="submit" value="login">
 </form>
 </body>
 </html>

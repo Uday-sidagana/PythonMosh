@@ -99,14 +99,19 @@ if __name__ == "__main__":
 
 
 #Forms, POST, JSON handling, File Handling
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__, template_folder='templates2')
 
-@app.route('/')
+@app.route('/', methods =['GET', 'POST'])
 def index():
-    a = "Uday"
-    return render_template('index.html', name=a)
+    if request.method == 'GET':
+        a = "Uday"
+        return render_template('index.html', name=a)
+    elif request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form['password']
+        return f"Your username is {username} and password is {password} "
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5200, debug=True)
