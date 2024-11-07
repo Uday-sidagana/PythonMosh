@@ -12,5 +12,11 @@
     <input type="password" placeholder="Password" name="password"><br>
     <input type="submit" value="login">
 </form>
+<p>File Upload</p>
+
+<form  method="POST" action="{{url_for('file_upload')}}" enctype="multipart/form-data">
+    <input type="file" accept="application/pdf" >
+    <input type="submit" value="File Upload">
+</form>
 </body>
 </html>

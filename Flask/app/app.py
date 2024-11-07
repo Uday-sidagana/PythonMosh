@@ -118,6 +118,11 @@ def index():
                 return "Bruh You ain't the panda I know!!"
         else:
             return "Please fill up the Fields!"
+        
+
+@app.route('/file_upload')
+def file_upload():
+    pass
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5200, debug=True)
