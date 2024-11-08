@@ -128,7 +128,8 @@ def file_upload():
     filename = secure_filename(display_files.filename) #created a file name(extracted)
     request.files['file'].save(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/{filename}')
     file_url = url_for('upload_file_dir', filename= filename)
-    return render_template('file.html', f_url = file_url)
+
+    return render_template('file.html', f_url = file_url, f_name = filename)
 
 @app.route('/uploads/<filename>')
 def upload_file_dir(filename):
