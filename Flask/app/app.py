@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
 
 #Forms, POST, JSON handling, File Handling
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, send_from_directory, url_for
 from werkzeug.utils import secure_filename #getting the file name
 import os.path
 
@@ -127,7 +127,13 @@ def file_upload():
     display_files = request.files.get('file')
     filename = secure_filename(display_files.filename) #created a file name(extracted)
     request.files['file'].save(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/{filename}')
-    return render_template('file.html',  disp= display_files)
+    file_url = url_for('upload_file_dir', filename= filename)
+    return render_template('file.html', f_url = file_url)
+
+@app.route('/uploads/<filename>')
+def upload_file_dir(filename):
+    return send_from_directory(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/', filename)
+
 
 
 if __name__ == "__main__":
