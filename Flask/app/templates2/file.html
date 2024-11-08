@@ -6,7 +6,8 @@
     
    <!-- <embed src="{{f_url}}" type="application/pdf" width="1420px" height="900px" /> -->
    <embed src="{{f_url}}" type="application/pdf" width="1000px" height="800px" />
-   <a href="{{f_url}}" download="{{f_name}}"><input type="button" value="Download"></a>
+   <!-- <a href="{{f_url}}" download="{{f_name}}"><input type="button" value="Download"></a> -->
+    <a href="{{url_for('file_download', filename = f_name)}}"><input type="button" value="Download"></a>
 </form>
 
 {%endblock%}

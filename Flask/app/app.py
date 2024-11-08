@@ -135,6 +135,9 @@ def file_upload():
 def upload_file_dir(filename):
     return send_from_directory(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/', filename)
 
+@app.route('/download/<filename>')
+def file_download(filename):
+    return send_from_directory(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/', filename, as_attachment=True)
 
 
 if __name__ == "__main__":
