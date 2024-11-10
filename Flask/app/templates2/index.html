@@ -18,5 +18,10 @@
     <input type="file" accept="application/pdf" name="file" >
     <input type="submit" value="File Upload">
 </form>
+
+<form action="POST" action="{{url_for('file_upload')}}" enctype="multipart/form-data">
+    <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="xfile" >
+    <input type="submit" name="" value="Excel File Upload">
+</form>
 </body>
 </html>
