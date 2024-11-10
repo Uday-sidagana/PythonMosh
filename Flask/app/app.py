@@ -140,16 +140,17 @@ def upload_file_dir(filename):
 def file_download(filename):
     return send_from_directory(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/', filename, as_attachment=True)
 
-@app.route('/xupload', methods= ['GET', 'POST'])
+@app.route('/xupload', methods= ['POST'])
 def xfile_upload():
-    if request.methods == 'POST':
-        f= request.files['xfile']
-        if f.content_type == 'text/plain':
-            return f.read().decode()
-        elif f.content_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or 'application/vnd.ms-excel':
+    # return "HELLO"
+    
+    f= request.files['xfile']
+    if f.content_type == 'text/plain':
+        return f.read().decode()
+    elif f.content_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or 'application/vnd.ms-excel':
 
-            df = pandas.read_excel(f)
-            return df.to_html()
+        df = pandas.read_excel(f)
+        return df.to_html()
 
     
 
