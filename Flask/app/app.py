@@ -102,6 +102,7 @@ if __name__ == "__main__":
 from flask import Flask, render_template, request, redirect, send_from_directory, url_for
 from werkzeug.utils import secure_filename #getting the file name
 import os.path
+import pandas
 
 app = Flask(__name__, template_folder='templates2')
 
@@ -139,9 +140,18 @@ def upload_file_dir(filename):
 def file_download(filename):
     return send_from_directory(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/', filename, as_attachment=True)
 
-@app.route('/xupload')
+@app.route('/xupload', methods= ['GET', 'POST'])
 def xfile_upload():
-    pass
+    if request.methods == 'POST':
+        f= request.files['xfile']
+        if f.content_type == 'text/plain':
+            return f.read().decode()
+        elif f.content_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or 'application/vnd.ms-excel':
+
+            df = pandas.read_excel(f)
+            return df.to_html()
+
+    
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5200, debug=True)
