@@ -139,6 +139,9 @@ def upload_file_dir(filename):
 def file_download(filename):
     return send_from_directory(f'/Users/macbookair/Desktop/python/Mosh/Flask/app/upload_test/', filename, as_attachment=True)
 
+@app.route('/xupload')
+def xfile_upload():
+    pass
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5200, debug=True)
