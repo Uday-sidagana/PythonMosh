@@ -185,16 +185,7 @@ def download_csv():
 
 @app.route('/download_csv_dir/<filename>')
 def download_csv_dir(filename):
-    # Debugging: Check if the file exists before attempting to send it
-    file_path = os.path.join(os.getcwd(), 'downloads', filename)
-    
-    # Debugging: Check if the file exists before serving it
-    if os.path.exists(file_path):
-        print(f"Serving file from: {file_path}")
-        return send_from_directory(os.path.join(os.getcwd(), 'downloads'), filename, as_attachment=True)
-    else:
-        print(f"File not found: {file_path}")
-        return "File not found", 404
+    return send_from_directory('/Users/macbookair/Desktop/python/Mosh/downloads', filename)
 
     
 
