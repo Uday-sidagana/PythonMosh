@@ -171,20 +171,28 @@ def convert_csv():
 
     return response
 
-@app.route('download_csv', methods=['POST'])
+@app.route('/download_csv', methods=['POST'])
 def download_csv():
     f = request.files['xfile']
     df = pandas.read_excel(f)
 
     if not os.path.exists('downloads'):
         os.mkdir('downloads')
-    filename = f'{uuid.uuid4()}.csv'
+    filename =  f'{uuid.uuid4()}.csv'
     df.to_csv(os.path.join('downloads', filename))
-    return render_template('download_csv.html', filename=filename)
+    file_url = url_for('download_csv_dir', filename=filename)
+    return render_template('download_csv.html', filename=filename, csvf_url = file_url)
 
 @app.route('/download_csv_dir/<filename>')
 def download_csv_dir(filename):
-    return send_from_directory('downloads', filename, download_name= 'result.csv')
+    # Debugging: Check if the file exists before attempting to send it
+    file_path = os.path.join('downloads', filename)
+    if os.path.exists(file_path):
+        print(f"Serving file from: {file_path}")
+        return send_from_directory('downloads', filename, as_attachment=True)
+    else:
+        print(f"File not found: {file_path}")
+        return "File not found", 404
 
     
 

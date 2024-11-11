@@ -28,5 +28,10 @@
     <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="xfile" >
     <input type="submit"  value="Convert CSV">
 </form>
+
+<form method="POST" action="{{url_for('download_csv')}}" enctype="multipart/form-data">
+    <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="xfile" >
+    <input type="submit"  value="Download CSV by Redirecting">
+</form>
 </body>
 </html>
