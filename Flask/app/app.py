@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
 
 #Forms, POST, JSON handling, File Handling
-from flask import Flask, render_template, request, redirect, send_from_directory, url_for
+from flask import Flask, render_template, request, redirect, send_from_directory, url_for, Response
 from werkzeug.utils import secure_filename #getting the file name
 import os.path
 import pandas
@@ -160,6 +160,14 @@ def convert_csv():
     # csv_path = '/Users/macbookair/Desktop/python/Mosh/Flask/app/static/temp.csv'
     # df.to_csv(csv_path, index=False)
     # return render_template('file.html', csv_path=csv_path)
+
+    response = Response(
+        df.to_csv,
+        mimetype="text/csv",
+        headers={'Content-Disposition': 'attachment; filename=result.csv'}
+    )
+
+    return response
 
     
 
