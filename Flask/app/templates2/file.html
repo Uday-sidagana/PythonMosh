@@ -10,12 +10,12 @@
     <a href="{{url_for('file_download', filename = f_name)}}"><input type="button" value="Download"></a>
 </form> 
 
-<form method="POST" action="{{url_for('convert_csv')}}" enctype="multipart/form-data">
+<!-- <form method="POST" action="{{url_for('convert_csv')}}" enctype="multipart/form-data"> -->
     
     <!-- <embed src="{{f_url}}" type="application/pdf" width="1420px" height="900px" /> -->
-    <iframe src="{{ url_for('static', filename='temp.csv') }}" width="1000px" height="800px" />
+    <!-- <iframe src="{{ url_for('static', filename='temp.csv') }}" width="1000px" height="800px" /> -->
     <!-- <a href="{{f_url}}" download="{{f_name}}"><input type="button" value="Download"></a> -->
     
- </form> 
+ <!-- </form>  -->
 
 {%endblock%}
