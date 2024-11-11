@@ -155,8 +155,8 @@ def xfile_upload():
 @app.route('/excel_to_csv', methods=['POST'])
 def convert_csv():
 
-    # f= request.files['xfile']
-    # df = pandas.read_excel(f)
+    f= request.files['xfile']
+    df = pandas.read_excel(f)
     # csv_path = '/Users/macbookair/Desktop/python/Mosh/Flask/app/static/temp.csv'
     # df.to_csv(csv_path, index=False)
     # return render_template('file.html', csv_path=csv_path)
