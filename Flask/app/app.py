@@ -154,8 +154,10 @@ def xfile_upload():
     
 @app.route('/excel_to_csv', methods=['POST'])
 def convert_csv():
-    pass
 
+    f= request.files['xfile']
+    df = pandas.read_excel(f)
+    return df.to_html()
     
 
 if __name__ == "__main__":
