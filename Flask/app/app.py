@@ -182,6 +182,10 @@ def download_csv():
     df.to_csv(os.path.join('downloads', filename))
     return render_template('download_csv.html', filename=filename)
 
+@app.route('/download_csv_dir/<filename>')
+def download_csv_dir(filename):
+    return send_from_directory('downloads', filename, download_name= 'result.csv')
+
     
 
 if __name__ == "__main__":
