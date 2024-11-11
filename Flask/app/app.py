@@ -103,6 +103,8 @@ from flask import Flask, render_template, request, redirect, send_from_directory
 from werkzeug.utils import secure_filename #getting the file name
 import os.path
 import pandas
+import os
+import uuid
 
 app = Flask(__name__, template_folder='templates2')
 
@@ -171,7 +173,14 @@ def convert_csv():
 
 @app.route('download_csv', methods=['POST'])
 def download_csv():
-    pass
+    f = request.files['xfile']
+    df = pandas.read_excel(f)
+
+    if not os.path.exists('downloads'):
+        os.mkdir('downloads')
+    filename = f'{uuid.uuid4()}.csv'
+    df.to_csv(os.path.join('downloads', filename))
+    return render_template('download_csv.html', filename=filename)
 
     
 
