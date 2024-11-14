@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
 
 #Forms, POST, JSON handling, File Handling
-from flask import Flask, render_template, request, redirect, send_from_directory, url_for, Response
+from flask import Flask, render_template, request, redirect, send_from_directory, url_for, Response, jsonify
 from werkzeug.utils import secure_filename #getting the file name
 import os.path
 import pandas
@@ -191,8 +191,13 @@ def download_csv_dir(filename):
 @app.route('/send_post', methods=['POST'])
 def send_post():
 
-    filerequest.json['greetings']
-    pass
+    greeting = request.json['greeting']
+    name = request.json['name']
+
+    with open("json_test.txt", "w") as f:
+        f.write(f"{greeting}! {name}")
+
+    return jsonify({'message': 'Success'})
     
 
 if __name__ == "__main__":
