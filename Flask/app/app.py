@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
 
 #Forms, POST, JSON handling, File Handling
-from flask import Flask, render_template, request, redirect, send_from_directory, url_for, Response, jsonify
+'''from flask import Flask, render_template, request, redirect, send_from_directory, url_for, Response, jsonify
 from werkzeug.utils import secure_filename #getting the file name
 import os.path
 import pandas
@@ -201,4 +201,18 @@ def send_post():
     
 
 if __name__ == "__main__":
-    app.run(host = '0.0.0.0', port=5200, debug=True)
+    app.run(host = '0.0.0.0', port=5200, debug=True)'''
+
+
+#----------Static files(CSS,Images, Bootstrap,etc..)
+
+from flask import Flask, render_template
+
+app = Flask(__name__, template_folder='templates3')
+
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
+
+if __name__ =='__main__':
+    app.run(host='0.0.0.0', port=5201, debug=True)
