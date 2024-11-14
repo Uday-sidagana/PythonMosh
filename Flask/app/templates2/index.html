@@ -35,6 +35,27 @@
 </form>
 
 <h1>JAVA Script JSON Request</h1>
-<button id="send_request">SEND POST REQUEST</button>
+<button id="post_button">SEND POST REQUEST</button>
+
+<script type="text/javascript">
+    const postButton = document.getElementById('post_button');
+
+    const jsonData = {'name':'Uday', 'greeting': 'Hello' }
+
+    postButton.addEventListener('click', ()=>{
+        fetch('{{ url_for("send_post")}}', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json; charset: utf-8'
+            },
+            body: JSON.stringify(jsonData)
+
+        } )
+        .then()
+    } )
+
+
+
+</script>
 </body>
 </html>

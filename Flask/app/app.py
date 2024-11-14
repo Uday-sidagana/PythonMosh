@@ -187,6 +187,12 @@ def download_csv():
 def download_csv_dir(filename):
     return send_from_directory('/Users/macbookair/Desktop/python/Mosh/downloads', filename)
 
+
+@app.route('/send_post', methods=['POST'])
+def send_post():
+
+    filerequest.json['greetings']
+    pass
     
 
 if __name__ == "__main__":
