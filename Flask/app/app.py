@@ -208,7 +208,7 @@ if __name__ == "__main__":
 
 from flask import Flask, render_template
 
-app = Flask(__name__, template_folder='templates3')
+app = Flask(__name__, template_folder='templates3', static_folder='static', static_url_path='/')
 
 @app.route('/', methods=['GET'])
 def index():
