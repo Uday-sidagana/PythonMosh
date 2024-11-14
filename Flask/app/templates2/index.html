@@ -51,8 +51,17 @@
             body: JSON.stringify(jsonData)
 
         } )
-        .then()
-    } )
+
+        .then(response => response.json())
+        .then(console.log('SUCCESS: ', data))
+        .catch((error) => {
+
+        console.error('ERROR: ', error);
+        });
+        
+    } );
+
+
 
 
 
