@@ -223,10 +223,13 @@ def set_data():
 
 @app.route('/get_data')
 def get_data():
-    name = session['name']
-    password = session['password']
+    if "name" in session.keys() and "password" in session.keys():
+        name = session['name']
+        password = session['password']
 
-    return render_template('index.html', message=f"{name} password: {password}")
+        return render_template('index.html', message=f"{name} password: {password}")
+    else:
+        return render_template('index.html', message="Dude, set the session data first")
 
 @app.route('/clear_session')
 def clear_session():
