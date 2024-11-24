@@ -217,7 +217,8 @@ def index():
 
 @app.route('/set_data')
 def set_data():
-    
+    session['name'] = 'Uday'
+    session['password'] = 'Jamala'
     return render_template('index.html')
 
 if __name__ =='__main__':
