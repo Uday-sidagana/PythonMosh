@@ -228,5 +228,11 @@ def get_data():
 
     return render_template('index.html', message=f"{name} password: {password}")
 
+@app.route('/clear_session')
+def clear_session():
+    session.clear()
+
+    return render_template('index.html', message = "Session cleared")
+
 if __name__ =='__main__':
     app.run(host='0.0.0.0', port=5201, debug=True)
