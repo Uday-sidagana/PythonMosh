@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
 #----------Static files(CSS,Images, Bootstrap,etc..)
 
-from flask import Flask, render_template, session, make_response
+from flask import Flask, render_template, session, make_response, request
 
 app = Flask(__name__, template_folder='templates3')
 app.secret_key= "SOME KEY"
@@ -245,6 +245,12 @@ def set_cookie():
      response.set_cookie('name', 'Uday')
 
      return response
+
+@app.route('/get_cookie')
+def get_cookie():
+    cookie= request.cookies['name']
+    return render_template('index.html', message = f"Cookie value: {cookie}")
+
 
 if __name__ =='__main__':
     app.run(host='0.0.0.0', port=5201, debug=True)
