@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
 #----------Static files(CSS,Images, Bootstrap,etc..)
 
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, make_response
 
 app = Flask(__name__, template_folder='templates3')
 app.secret_key= "SOME KEY"
@@ -229,13 +229,22 @@ def get_data():
 
         return render_template('index.html', message=f"{name} password: {password}")
     else:
-        return render_template('index.html', message="Dude, set the session data first")
+        return render_template('index.html', message="Dude, set the session first")
 
 @app.route('/clear_session')
 def clear_session():
     session.clear()
+    # session.pop('name')   To clear a specific data
+    # session.pop('password')
 
     return render_template('index.html', message = "Session cleared")
+
+@app.route('/set_cookie')
+def set_cookie():
+     response = make_response(render_template('index.html', message = "Cookie set Succefully"))
+     response.set_cookie('name', 'Uday')
+
+     return response
 
 if __name__ =='__main__':
     app.run(host='0.0.0.0', port=5201, debug=True)
