@@ -206,12 +206,18 @@ if __name__ == "__main__":
 
 #----------Static files(CSS,Images, Bootstrap,etc..)
 
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 
-app = Flask(__name__, template_folder='templates3', static_folder='static', static_url_path='/')
+app = Flask(__name__, template_folder='templates3')
+app.secret_key= "SOME KEY"
 
 @app.route('/', methods=['GET'])
 def index():
+    return render_template('index.html')
+
+@app.route('/set_data')
+def set_data():
+    
     return render_template('index.html')
 
 if __name__ =='__main__':
