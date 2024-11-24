@@ -221,5 +221,12 @@ def set_data():
     session['password'] = 'Jamala'
     return render_template('index.html', message = "Session data set")
 
+@app.route('/get_data')
+def get_data():
+    name = session['name']
+    password = session['password']
+
+    return render_template('index.html', message=f"{name} password: {password}")
+
 if __name__ =='__main__':
     app.run(host='0.0.0.0', port=5201, debug=True)
