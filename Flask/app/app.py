@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
 #----------Static files(CSS,Images, Bootstrap,etc..)
 
-from flask import Flask, render_template, session, make_response, request
+from flask import Flask, render_template, session, make_response, request, flash
 
 app = Flask(__name__, template_folder='templates3')
 app.secret_key= "SOME KEY"
@@ -258,9 +258,24 @@ def remove_cookie():
     return response
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    username = request.form['username']
+    password = request.form['password']
+    if request.method == 'GET':
+        return render_template('login.html')
+    
+    elif request.method == 'POST':
+        if username == 'UdaySidagana' and password == '12345':
+
+            flash('LOGIN SUCCESSFUL!')
+            return render_template('login.html', message = "")
+    
+        else:
+            flash('LOGIN FAILED!')
+            return render_template('login.html', message = '')
+
+    
 
 
 if __name__ =='__main__':
