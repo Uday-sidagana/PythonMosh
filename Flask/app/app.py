@@ -260,8 +260,8 @@ def remove_cookie():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.form.get('username')
+    password = request.form.get('password')
     if request.method == 'GET':
         return render_template('login.html')
     
