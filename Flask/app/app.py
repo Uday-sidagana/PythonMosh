@@ -269,11 +269,11 @@ def login():
         if username == 'UdaySidagana' and password == '12345':
 
             flash('LOGIN SUCCESSFUL!')
-            return render_template('login.html', message = "")
+            return render_template('index.html', message = "")
     
         else:
             flash('LOGIN FAILED!')
-            return render_template('login.html', message = '')
+            return render_template('index.html', message = '')
 
     
 
