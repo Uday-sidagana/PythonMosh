@@ -273,7 +273,7 @@ def login():
     
         else:
             flash('LOGIN FAILED!')
-            return render_template('index.html', message = '')
+            return render_template('login.html', message = '')
 
     
 
