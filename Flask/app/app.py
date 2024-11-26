@@ -218,7 +218,7 @@ def index():
 @app.route('/set_data')
 def set_data():
     session['name'] = 'Uday'
-    session['password'] = 'Jamala'
+    session['password'] = 'Jamal'
     return render_template('index.html', message = "Session data set")
 
 @app.route('/get_data')
