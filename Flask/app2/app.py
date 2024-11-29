@@ -5,5 +5,4 @@ from flask_migrate import Migrate
 db = SQLAlchemy()
 
 def create_app():
-    app = Flask(__name__, template_folder="template")
-    
+    app = Flask(__name__, template_folder="templates")
