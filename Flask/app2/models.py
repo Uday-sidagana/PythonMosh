@@ -8,4 +8,6 @@ class Person(db.Model):
     age = db.Column(db.Integer)
     job = db.Column(db.Text)
 
-    
+    def __repr__(self):
+        return f"Name = {self.name}, age = {self.age}, Job = {self.job}"
+
