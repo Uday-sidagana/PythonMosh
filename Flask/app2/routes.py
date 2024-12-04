@@ -3,7 +3,7 @@ from models import Person
 
 def register_routes(app, db):
 
-    @app.route('/')
+    @app.route('/index', methods =['GET', 'POST'])
     def index():
         person = Person.query.all()
         name = request.form.get('name')
