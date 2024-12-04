@@ -15,13 +15,13 @@ def register_routes(app, db):
             Age = request.form.get('age')
             Job = request.form.get('job')
 
-            return f"{Name} {Age} {Job}"
+            # return f"{Name} {Age} {Job}"
 
-            # person = Person(name=Name, age=Age, job=Job)
-            # db.session.add(person)
-            # db.session.commit()
+            person = Person(name=Name, age=Age, job=Job)
+            db.session.add(person)
+            db.session.commit()
 
 
-            # person = Person.query.all()
-            # return render_template('index.html', people = person)
+            person = Person.query.all()
+            return render_template('index.html', people = person)
     
