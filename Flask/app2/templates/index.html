@@ -10,4 +10,11 @@
     {% endfor %}
 </ul>
 
+<h3>New Person</h3>
+    <form action="{{url_for('new_person')}}" method="POST">
+        <input type="text" placeholder="NAME" value="name">
+        <input type="number" placeholder="AGE" value="age" >
+        <input type="text" placeholder="JOB" value="job">
+    </form>
+
 {% endblock %}
