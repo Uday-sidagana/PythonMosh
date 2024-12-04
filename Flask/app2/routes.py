@@ -6,4 +6,4 @@ def register_routes(app, db):
     @app.route('/')
     def index():
         person = Person.query.all()
-        return str(person)
+        return render_template('index.html', people = person)
