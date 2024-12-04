@@ -12,9 +12,9 @@
 
 <h3>New Person</h3>
     <form action="{{url_for('index')}}" method="POST">
-        <input type="text" placeholder="NAME" value="name"><br>
-        <input type="number" placeholder="AGE" value="age" ><br>
-        <input type="text" placeholder="JOB" value="job"><br>
+        <input type="text" placeholder="NAME" name="name"><br>
+        <input type="number" placeholder="AGE" name="age" ><br>
+        <input type="text" placeholder="JOB" name="job"><br>
         <input type="submit" value="Add New Person">
     </form>
 
