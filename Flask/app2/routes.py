@@ -28,8 +28,10 @@ def register_routes(app, db):
     @app.route('/delete/<pid>', methods = ['DELETE'])
     def delete(pid):
 
-        Person.query.filter(pid).delete()
+        Person.query.filter(Person.pid == pid).delete()
+
 
         db.session.commit()
+        people = Person.query.all()
         return render_template('index.html', people = Person)
     
