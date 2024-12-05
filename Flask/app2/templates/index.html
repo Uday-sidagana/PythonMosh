@@ -24,22 +24,22 @@
 {% endblock %}
 
 <script type="text/javascript">
-    function deletePerson(pid){
-        // fetch and method is the primary code
-        fetch('{{ url_for("delete", pid=pid)}}'+ pid, {
+    function deletePerson(pid) {
+        const url = `{{ url_for("delete", pid="") }}${pid}`;
+        console.log('Request URL:', url); // Debugging
+
+        fetch(url, {
             method: 'DELETE'
-        }).then(response =>{
-            if(response.ok){
+        })
+        .then(response => {
+            if (response.ok) {
                 window.location.reload();
-            }
-            else{
-                console.error('FAILED to DLEETE', pid);
+            } else {
+                console.error('Failed to delete:', pid);
             }
         })
-
         .catch(error => {
-            console.error('error while fetching', error);
+            console.error('Error during fetch:', error);
         });
-    };
-    
+    }
 </script>
