@@ -33,5 +33,5 @@ def register_routes(app, db):
 
         db.session.commit()
         people = Person.query.all()
-        return render_template('index.html', people = Person)
+        return render_template('index.html', people = people)
     
