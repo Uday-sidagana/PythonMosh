@@ -1,45 +1,23 @@
-{% extends 'base.html'  %}
+{% extends 'base.html' %}
 {% block title %}INDEX{% endblock %}
 {% block content %}
 <h1>INDEX PAGE</h1>
 <ul>
     {% for person in people %}
     <li>
-        {{person}} <button onclick="deletePerson({{ person.pid }})">Delete</button>
-
+        {{ person.name }} (ID: {{ person.pid }})
+        <button onclick="deletePerson({{ person.pid }})">Delete</button>
     </li>
-    <li>{{ person.name }} (ID: {{ person.pid }})</li>
-
     {% endfor %}
 </ul>
 
 <h3>New Person</h3>
-    <form action="{{url_for('index')}}" method="POST">
-        <input type="text" placeholder="NAME" name="name"><br>
-        <input type="number" placeholder="AGE" name="age" ><br>
-        <input type="text" placeholder="JOB" name="job"><br>
-        <input type="submit" value="Add New Person">
-    </form>
+<form action="{{ url_for('index') }}" method="POST">
+    <input type="text" placeholder="NAME" name="name"><br>
+    <input type="number" placeholder="AGE" name="age"><br>
+    <input type="text" placeholder="JOB" name="job"><br>
+    <input type="submit" value="Add New Person">
+</form>
 
+<script src="{{ url_for('static', filename='app.js') }}"></script>
 {% endblock %}
-
-<script type="text/javascript">
-    function deletePerson(pid) {
-        const url = `{{ url_for("delete", pid="") }}${pid}`;
-        console.log('Request URL:', url); // Debugging
-
-        fetch(url, {
-            method: 'DELETE'
-        })
-        .then(response => {
-            if (response.ok) {
-                window.location.reload();
-            } else {
-                console.error('Failed to delete:', pid);
-            }
-        })
-        .catch(error => {
-            console.error('Error during fetch:', error);
-        });
-    }
-</script>
