@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, redirect
 from models import Person
 
 
@@ -22,8 +22,7 @@ def register_routes(app, db):
             db.session.commit()
 
 
-            person = Person.query.all()
-            return render_template('index.html', people = person)
+            return redirect(url_for('index'))
     
     @app.route('/delete/<int:pid>', methods = ['DELETE'])
     def delete(pid):
