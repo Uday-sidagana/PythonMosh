@@ -34,3 +34,10 @@ def register_routes(app, db):
         people = Person.query.all()
         return render_template('index.html', people = people)
     
+    @app.route('/details/<pid>')
+    def details(pid):
+
+        person = Person.query.filter(Person.pid == pid).first()
+
+        return render_template('detail.html', person = person)
+    
