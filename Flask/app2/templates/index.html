@@ -6,10 +6,10 @@
     {% for person in people %}
     <li>
         {{ person.name }} (ID: {{ person.pid }})
-        <form action="{{url_for('details', pid=person.pid)}}" method="GET">
+        <!-- <form action="{{url_for('details', pid=person.pid)}}" method="GET">
             <button type="submit">Details</button>
-        </form>
-        <button onclick="deletePerson({{ person.pid }})">Delete</button>
+        </form> -->
+        <button onclick="deletePerson({{ person.pid }})">Delete</button> <a href="{{url_for('details', pid = person.pid)}}">Details</a>
     </li>
     {% endfor %}
 </ul>
