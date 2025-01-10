@@ -1,4 +1,5 @@
-from app import db
+from flask_login import UserMixin
+from app import db 
 
 class Person(db.Model):
     __tablename__ = 'people'
@@ -11,3 +12,22 @@ class Person(db.Model):
     def __repr__(self):
         return f"Name = {self.name}, age = {self.age}, Job = {self.job}"
 
+class User(db.Model, UserMixin ):
+
+    __tablename__ = 'users'
+
+    uid = db.Column(db.Integer, primary_key = True)
+
+    name = db.Column(db.String, nullable = False)
+    password = db.Column(db.String, nullable =False)
+    role = db.Column(db.String)
+    description = db.Column(db.String)
+
+    def __repr__(self):
+        return f"user: {self.name}"
+
+    def user_id(self):
+        return self.uid
+    
+
+    
