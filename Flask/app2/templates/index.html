@@ -2,6 +2,7 @@
 {% block title %}INDEX{% endblock %}
 {% block content %}
 <h1>INDEX PAGE</h1>
+<p>Welcome {{current_user}}</p>
 <ul>
     {% for person in people %}
     <li>
@@ -21,6 +22,8 @@
     <input type="text" placeholder="JOB" name="job"><br>
     <input type="submit" value="Add New Person">
 </form>
+
+
 
 <script src="{{ url_for('static', filename='app.js') }}"></script>
 {% endblock %}

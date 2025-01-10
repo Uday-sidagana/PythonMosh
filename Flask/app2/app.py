@@ -5,11 +5,15 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 
 
+
+
 db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__, template_folder="templates")
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./testdb.db'
+
+    app.secret_key = "SOME KEY"
 
     db.init_app(app)
 

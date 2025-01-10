@@ -1,11 +1,20 @@
 from flask import render_template, request, redirect, url_for
 from models import Person
 from models import User
+from flask_login import login_user, logout_user, current_user, login_required
 
 
 
 
 def register_routes(app, db, bcrypt):
+
+    @app.route('/login/<uid>', methods = ['GET', 'POST'])
+    def login(uid):
+        user = User.query.get(uid)
+        login_user(user)
+    
+        return render_template('index.html', current_user = user.name)
+
 
     @app.route('/index/', methods =['GET', 'POST'])
     def index():
