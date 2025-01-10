@@ -1,8 +1,11 @@
 from flask import render_template, request, redirect, url_for
 from models import Person
+from models import User
 
 
-def register_routes(app, db):
+
+
+def register_routes(app, db, bcrypt):
 
     @app.route('/index/', methods =['GET', 'POST'])
     def index():

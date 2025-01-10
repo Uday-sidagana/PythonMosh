@@ -22,9 +22,11 @@ def create_app():
     def load_user(uid):
         User.query.get(uid)
 
+    bcrypt = Bcrypt(app)
+
 
     from routes import register_routes
-    register_routes(app, db)
+    register_routes(app, db, bcrypt)
 
     migrate = Migrate(app, db)
 
