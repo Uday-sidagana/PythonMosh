@@ -14,6 +14,10 @@ def register_routes(app, db, bcrypt):
         login_user(user)
     
         return render_template('index.html', current_user = user.name)
+    @app.route('/logout/', methods = ['GET'])
+    def logout():
+        logout_user()
+        return "success"
 
 
     @app.route('/index/', methods =['GET', 'POST'])
