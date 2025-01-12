@@ -10,7 +10,10 @@ def register_routes(app, db, bcrypt):
 
     @app.route('/login/<uid>', methods = ['GET', 'POST'])
     def login(uid):
+        if current_user.is_authenticated:
+            return redirect(url_for('index'))
         user = User.query.get(uid)
+        
         if user:
             
             # person = Person.query.all()
@@ -18,8 +21,7 @@ def register_routes(app, db, bcrypt):
         
             return render_template('index.html', current_user = user.name) #,people = person)
         
-        elif current_user.is_authenticated:
-            return redirect(url_for('index'))
+        
         
         else:
             return "No user found"
