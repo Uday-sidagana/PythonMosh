@@ -20,7 +20,8 @@ def register_routes(app, db, bcrypt):
     def index():
         if request.method == 'GET':
             person = Person.query.all()
-            return render_template('index.html', people = person)
+            user = User.query.all()
+            return render_template('index.html', people = person, current_user= user )
         
         elif request.method == 'POST':
             Name = request.form.get('name')
