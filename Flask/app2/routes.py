@@ -11,13 +11,18 @@ def register_routes(app, db, bcrypt):
     @app.route('/login/<uid>', methods = ['GET', 'POST'])
     def login(uid):
         user = User.query.get(uid)
+        person = Person.query.all()
         login_user(user)
     
-        return render_template('index.html', current_user = user.name)
+        return render_template('index.html', current_user = user.name, people = person)
     @app.route('/logout/', methods = ['GET'])
+
     def logout():
-        logout_user()
-        return "success"
+        if request.method == 'GET':
+            logout_user()
+            return "success"
+        # elif request.method == 'POST':
+
 
 
     @app.route('/index/', methods =['GET', 'POST'])
