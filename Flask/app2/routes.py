@@ -20,7 +20,8 @@ def register_routes(app, db, bcrypt):
     def logout():
         if request.method == 'GET':
             logout_user()
-            return "success"
+            person = Person.query.all()
+            return render_template('index.html', people = person )
         # elif request.method == 'POST':
 
 
