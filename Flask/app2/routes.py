@@ -11,10 +11,18 @@ def register_routes(app, db, bcrypt):
     @app.route('/login/<uid>', methods = ['GET', 'POST'])
     def login(uid):
         user = User.query.get(uid)
-        person = Person.query.all()
-        login_user(user)
-    
-        return render_template('index.html', current_user = user.name, people = person)
+        if user:
+            
+            # person = Person.query.all()
+            login_user(user)
+        
+            return render_template('index.html', current_user = user.name) #,people = person)
+        
+        elif current_user.is_authenticated:
+            person = Person.query.all()
+            return render_template('index.html', current_user=user, people= person )
+        else:
+            return "No user found"
     @app.route('/logout/', methods = ['GET'])
 
     def logout():
