@@ -20,6 +20,7 @@ def register_routes(app, db, bcrypt):
         
         elif current_user.is_authenticated:
             return redirect(url_for('index'))
+        
         else:
             return "No user found"
     @app.route('/logout/', methods = ['GET'])
