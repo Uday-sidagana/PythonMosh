@@ -57,6 +57,7 @@ def register_routes(app, db, bcrypt):
 
 
     @app.route('/index/', methods =['GET', 'POST'])
+    
     def index():
         if request.method == 'GET':
             person = Person.query.all()
