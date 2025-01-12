@@ -32,17 +32,27 @@ def register_routes(app, db, bcrypt):
             return render_template('index.html', people = person )
         # elif request.method == 'POST':
 
-    @app.route('/signup/')
+    @app.route('/signup/', methods = ['GET', 'POST'])
     def signup():
-        Uid = request.form.get('uid')
-        Name = request.form.get('name')
-        Password = request.form.get('password')
-        Role = request.form.get('role')
-        Description = request.form.get('description')
+        if request.method == 'GET':
+            return render_template('signup.html')
+        
 
-        user = User(uid = Uid, name = Name, password = Password, role=Role, description=Description)
-        db.session.add(user)
-        db.session.commit()
+        elif request.method == 'POST':
+            Uid = request.form.get('uid')
+            Name = request.form.get('name')
+            Password = request.form.get('password')
+            Role = request.form.get('role')
+            Description = request.form.get('description')
+
+            user = User(uid = Uid, name = Name, password = Password, role=Role, description=Description)
+            db.session.add(user)
+            db.session.commit()
+
+
+    
+
+            return redirect(url_for('login', uid = Uid ))
 
 
 
