@@ -46,8 +46,9 @@ def register_routes(app, db, bcrypt):
             Password = request.form.get('password')
             Role = request.form.get('role')
             Description = request.form.get('description')
+            hashed_password = bcrypt.generate_password_hash(Password)
 
-            user = User(uid = Uid, name = Name, password = Password, role=Role, description=Description)
+            user = User(uid = Uid, name = Name, password = hashed_password, role=Role, description=Description)
             db.session.add(user)
             db.session.commit()
 
