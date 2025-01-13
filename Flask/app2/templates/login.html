@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}SIGNUP{% endblock %}
+{% block title %}LOGIN{% endblock %}
 {% block content %}
-<form action=" {{ url_for('signup') }}" method="POST">
+<form action=" {{ url_for('login') }}" method="POST">
     <input type="number" name="uid" placeholder="UID"><br>
     <input type="text" name ="name" placeholder="Name" required="required"><br>
     <input type="password" name="password" placeholder="password" required="required"><br>
