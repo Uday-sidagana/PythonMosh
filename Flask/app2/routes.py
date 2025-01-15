@@ -8,11 +8,15 @@ from flask_login import login_user, logout_user, current_user, login_required
 
 def register_routes(app, db, bcrypt):
 
-    @app.route('/login/<uid>', methods = ['GET', 'POST'])
-    def login(uid):
+    @app.route('/login/', methods = ['GET', 'POST'])
+    def login():
         if current_user.is_authenticated:
             return redirect(url_for('index'))
-        user = User.query.get(uid)
+        Uid = request.form.get('uid')
+        Name = request.form.get('name')
+        Password = request.form.get('password')
+        
+        user = User.query.get(Uid)
         
         if user:
             
@@ -56,6 +60,11 @@ def register_routes(app, db, bcrypt):
     
 
             return redirect(url_for('login', uid = Uid ))
+        
+    @app.route('/loginbttn/', methods=['GET'])
+    def loginbttn():
+        Uid = request.form.get('uid')
+        return render_template('login.html', uid = Uid)
 
 
 
