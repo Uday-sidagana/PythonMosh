@@ -60,7 +60,7 @@ def register_routes(app, db, bcrypt):
 
     
 
-            return redirect(url_for('login', uid = Uid ))
+            return render_template('login.html')
         
     @app.route('/loginbttn/', methods=['GET'])
     def loginbttn():
