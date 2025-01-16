@@ -12,6 +12,7 @@ def register_routes(app, db, bcrypt):
     def login():
         if current_user.is_authenticated:
             return redirect(url_for('index'))
+        
         Uid = request.form.get('uid')
         Name = request.form.get('name')
         Password = request.form.get('password')
@@ -65,6 +66,10 @@ def register_routes(app, db, bcrypt):
     def loginbttn():
         Uid = request.form.get('uid')
         return render_template('login.html', uid = Uid)
+    
+    @app.route('/signupbttn/', methods = ['GET'])
+    def signupbttn():
+        return render_template('signup.html')
 
 
 
