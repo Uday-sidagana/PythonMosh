@@ -36,7 +36,7 @@ def register_routes(app, db, bcrypt):
                 #     return render_template('index.html', current_user = user.name) #,people = person)
                 
                 else:
-                    return "Wrong Username or Password"
+                    return "Wrong Password"
             
             else:
                 return "No User Found"
