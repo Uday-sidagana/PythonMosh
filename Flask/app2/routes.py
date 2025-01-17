@@ -82,6 +82,11 @@ def register_routes(app, db, bcrypt):
     @app.route('/signupbttn/', methods = ['GET'])
     def signupbttn():
         return render_template('signup.html')
+    
+    @app.route('/secret/')
+    @login_required
+    def secret():
+        return "My secret"
 
 
 
