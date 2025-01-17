@@ -23,3 +23,4 @@ function deletePerson(pid) {
         alert('An error occurred. Please try again.');
     });
 }
+

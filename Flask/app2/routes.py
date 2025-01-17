@@ -17,14 +17,21 @@ def register_routes(app, db, bcrypt):
         Name = request.form.get('name')
         Password = request.form.get('password')
         
-        user = User.query.get(Uid)
-        
-        if user:
-            
-            # person = Person.query.all()
+        user = User.query.filter(User.name == Name).first()
+
+        if bcrypt.check_password_hash(user.password, Password):
             login_user(user)
         
-            return render_template('index.html', current_user = user.name) #,people = person)
+            return render_template('index.html') #,current_user = user.name) #,people = person)
+        
+
+        
+        # if user:
+            
+        #     # person = Person.query.all()
+        #     login_user(user)
+        
+        #     return render_template('index.html', current_user = user.name) #,people = person)
         
         
         
