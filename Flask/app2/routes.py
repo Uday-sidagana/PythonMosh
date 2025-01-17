@@ -10,33 +10,34 @@ def register_routes(app, db, bcrypt):
 
     @app.route('/login/', methods = ['GET', 'POST'])
     def login():
-        if current_user.is_authenticated:
+        if request.method == 'GET':
             return redirect(url_for('index'))
         
-        Uid = request.form.get('uid')
-        Name = request.form.get('name')
-        Password = request.form.get('password')
-        
-        user = User.query.filter(User.name == Name).first()
-
-        if bcrypt.check_password_hash(user.password, Password):
-            login_user(user)
-        
-            return render_template('index.html') #,current_user = user.name) #,people = person)
-        
-
-        
-        # if user:
+        elif request.method == 'POST':
+            Uid = request.form.get('uid')
+            Name = request.form.get('name')
+            Password = request.form.get('password')
             
-        #     # person = Person.query.all()
-        #     login_user(user)
+            user = User.query.filter(User.name == Name).first()
+
+            if user and bcrypt.check_password_hash(user.password, Password):
+                login_user(user)
+            
+                return render_template('index.html') #,current_user = user.name) #,people = person)
+            
+
+            
+            # if user:
+                
+            #     # person = Person.query.all()
+            #     login_user(user)
+            
+            #     return render_template('index.html', current_user = user.name) #,people = person)
+            
+            else:
+                return "No user found"
         
-        #     return render_template('index.html', current_user = user.name) #,people = person)
-        
-        
-        
-        else:
-            return "No user found"
+
     @app.route('/logout/', methods = ['GET'])
 
     def logout():
@@ -69,7 +70,7 @@ def register_routes(app, db, bcrypt):
 
             return render_template('login.html')
         
-    @app.route('/loginbttn/', methods=['GET'])
+    @app.route('/loginbttn/', methods=['POST'])
     def loginbttn():
         Uid = request.form.get('uid')
         return render_template('login.html', uid = Uid)
