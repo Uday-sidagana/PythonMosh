@@ -20,22 +20,26 @@ def register_routes(app, db, bcrypt):
             
             user = User.query.filter(User.name == Name).first()
 
-            if user and bcrypt.check_password_hash(user.password, Password):
-                login_user(user)
-            
-                return render_template('index.html') #,current_user = user.name) #,people = person)
-            
-
-            
-            # if user:
+            if user:
+                if bcrypt.check_password_hash(user.password, Password):
+                    login_user(user)
                 
-            #     # person = Person.query.all()
-            #     login_user(user)
-            
-            #     return render_template('index.html', current_user = user.name) #,people = person)
+                    return render_template('index.html') #,current_user = user.name) #,people = person)
+                
+
+                
+                # if user:
+                    
+                #     # person = Person.query.all()
+                #     login_user(user)
+                
+                #     return render_template('index.html', current_user = user.name) #,people = person)
+                
+                else:
+                    return "Wrong Username or Password"
             
             else:
-                return "No user found"
+                return "No User Found"
         
 
     @app.route('/logout/', methods = ['GET'])
