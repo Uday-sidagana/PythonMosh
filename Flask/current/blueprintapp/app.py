@@ -10,3 +10,11 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./blueprints.db'
 
     db.init_app(app)
+
+
+    #import and register all blueprints
+
+    migrate = Migrate(app, db)
+
+    return app
+
