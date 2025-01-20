@@ -2,6 +2,11 @@ from flask import redirect, request, render_template, url_for, Blueprint
 
 from blueprintapp.app import db
 
-from blueprintapp.blueprints.todos.models import Todos
+from blueprintapp.todos.models import Todos
 
-todos = Blueprint('todos',__name__, template_folder='templates')
+todos = Blueprint('todos', __name__ , template_folder='templates')
+
+@todos.route()
+def index():
+    todos = Todos.query.all()
+    return render_template('index.html')
