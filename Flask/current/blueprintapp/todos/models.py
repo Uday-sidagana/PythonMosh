@@ -9,4 +9,6 @@ class Todo(db.Model):
     description = db.Column(db.String)
     done = db.Coulmn(db.Boolean, nullable = False)
 
+    def __repr__(self):
+        return f"{self.description}, Done: {self.done}"
     
