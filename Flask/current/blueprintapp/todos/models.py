@@ -12,3 +12,6 @@ class Todo(db.Model):
     def __repr__(self):
         return f"{self.description}, Done: {self.done}"
     
+    def get_id(self):
+        return self.tid
+    
