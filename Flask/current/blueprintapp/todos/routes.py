@@ -4,4 +4,4 @@ from blueprintapp.app import db
 
 from blueprintapp.blueprints.todos.models import Todos
 
-todos = Blueprint(__name__, template_folder='templates')
+todos = Blueprint('todos',__name__, template_folder='templates')
