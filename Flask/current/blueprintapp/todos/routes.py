@@ -17,4 +17,10 @@ def create():
         return render_template('todos/create.html')
     
     elif request.method == 'POST':
-        pass
+        title = request.form.get('Title')
+        description = request.form.get('Description')
+        done = True if 'Done' in request.form.keys() else False
+
+        description = description if description != '' else None
+
+
