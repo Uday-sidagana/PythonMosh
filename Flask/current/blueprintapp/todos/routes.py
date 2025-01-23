@@ -9,4 +9,4 @@ todos = Blueprint('todos', __name__ , template_folder='templates')
 @todos.route()
 def index():
     todos = Todos.query.all()
-    return render_template('index.html')
+    return render_template('todos/index.html')
