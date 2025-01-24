@@ -23,4 +23,6 @@ def create():
 
         description = description if description != '' else None
 
+        todo = Todos(Title = title, Description= description, Done = done)
+
 
