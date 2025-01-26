@@ -14,6 +14,9 @@ def create_app():
 
     #import and register all blueprints
 
+    from blueprintapp.todos.routes import todos
+    app.register_blueprint(todos)
+
     migrate = Migrate(app, db)
 
     return app
