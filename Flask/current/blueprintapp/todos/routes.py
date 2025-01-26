@@ -25,4 +25,9 @@ def create():
 
         todo = Todos(Title = title, Description= description, Done = done)
 
+        db.session.add(todo)
+        db.session.commit()
+
+        return redirect(url_for('todos.index'))
+
 
